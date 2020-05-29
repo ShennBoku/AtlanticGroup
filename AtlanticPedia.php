@@ -1,4 +1,21 @@
 <?php
+.---------------------------------------------------------------------------.
+|    Script: AtlanticPedia Master                                           |
+|   Version: 1.0                                                            |
+|   Release: May 21, 2020 (21:35 WIB)                                       |
+|    Update: May 21, 2020 (21:35 WIB)                                       |
+|                                                                           |
+|                     Pasal 57 ayat (1) UU 28 Tahun 2014                    |
+|      Copyright © 2019, Afdhalul Ichsan Yourdan. All Rights Reserved.      |
+| ------------------------------------------------------------------------- |
+| Hubungi Saya:                                                             |
+| - Facebook    - Afdhalul Ichsan Yourdan   - https://s.id/ShennFacebook    |
+| - Instagram   - ShennBoku                 - https://s.id/ShennInstagram   |
+| - Telegram    - ShennBoku                 - https://t.me/ShennBoku        |
+| - Twitter     - ShennBoku                 - https://s.id/ShennTwitter     |
+| - WhatsApp    - 0878 7954 2355            - 0822 1158 2471                |
+'---------------------------------------------------------------------------'
+
 class AtlanticPedia
 {
     private $base_url;

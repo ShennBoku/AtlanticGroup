@@ -45,10 +45,11 @@ class AtlanticPedia
             if($x == 'pulsa') $try = $this->connect('/pulsa',$data);
             if($x == 'games') $try = $this->connect('/game',$data);
             if($x == 'sosmed') $try = $this->connect('/sosmed',$data);
+            $msg = $try['result'] == false ? $try['data'] : 'Status data from Atlantic Pedia was successfully obtained.';
             return [
                 'result' => $try['result'],
                 'data' => $try['result'] == false ? '' : $try['data'],
-                'message' => $try['result'] == false ? $try['data'] : 'Successfully placed orders at Atlantic Pedia.'
+                'message' => isset($try['data']['message']) ? $try['data']['message'] : $msg
             ];
         } else {
             return ['result' => false,'data' => null,'message' => 'Invalid Request!'];
@@ -61,7 +62,7 @@ class AtlanticPedia
             if($x == 'games') $try = $this->connect('/game',['action' => 'status','trxid' => $id]);
             if($x == 'games-server') $try = $this->connect('/game',['action' => 'server','server' => $id]);
             if($x == 'sosmed') $try = $this->connect('/sosmed',['action' => 'status','trxid' => $id]);
-            $msg = $try['result'] == false ? $try['data'] : 'Service data from Atlantic Pedia was successfully obtained.';
+            $msg = $try['result'] == false ? $try['data'] : 'Status data from Atlantic Pedia was successfully obtained.';
             return [
                 'result' => $try['result'],
                 'data' => $try['result'] == false ? '' : $try['data'],

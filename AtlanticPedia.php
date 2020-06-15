@@ -4,7 +4,7 @@
 |    Script: AtlanticPedia Master                                           |
 |   Version: 1.0                                                            |
 |   Release: May 21, 2020 (21:35 WIB)                                       |
-|    Update: May 21, 2020 (21:35 WIB)                                       |
+|    Update: June 15, 2020 (16:16 WIB)                                      |
 |                                                                           |
 |                     Pasal 57 ayat (1) UU 28 Tahun 2014                    |
 |      Copyright © 2019, Afdhalul Ichsan Yourdan. All Rights Reserved.      |
@@ -45,7 +45,7 @@ class AtlanticPedia
             if($x == 'pulsa') $try = $this->connect('/pulsa',$data);
             if($x == 'games') $try = $this->connect('/game',$data);
             if($x == 'sosmed') $try = $this->connect('/sosmed',$data);
-            $msg = $try['result'] == false ? $try['data'] : 'Status data from Atlantic Pedia was successfully obtained.';
+            $msg = $try['result'] == false ? $try['data'] : '';
             return [
                 'result' => $try['result'],
                 'data' => $try['result'] == false ? '' : $try['data'],

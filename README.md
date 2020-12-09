@@ -1,9 +1,9 @@
-# AtlanticGroup
+# PT. Atlantic Aksa Group
 Atlantic Group 1 File Class
 
 ## Authors
-* **Dhifo Aksa Hermawan** - *BOT Developer* - [Dhifo](https://www.facebook.com/dhifoaksa)
-* **Afdhalul Ichsan Yourdan** - *BOT Documentation* - [ShennBoku](https://facebook.com/ShennBoku)
+* **Dhifo Aksa Hermawan** - *Founder* - [Dhifo](https://www.facebook.com/dhifoaksa)
+* **Afdhalul Ichsan Yourdan** - *Developer 1* - [ShennBoku](https://facebook.com/ShennBoku)
 
 ## License
 

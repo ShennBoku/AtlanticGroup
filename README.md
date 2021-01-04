@@ -3,7 +3,8 @@
 
 ## Authors
 * **Dhifo Aksa Hermawan** - *Founder* - [Dhifo](https://www.facebook.com/dhifoaksa)
-* **Afdhalul Ichsan Yourdan** - *Developer 1* - [ShennBoku](https://facebook.com/ShennBoku)
+* **Afdhalul Ichsan Yourdan** - *H. Developer* - [ShennBoku](https://facebook.com/ShennBoku)
+* **Rifqi Galih Nur Ikhsan** - *ShennBoku Assistance* - [RGSann](https://facebook.com/rgsann)
 
 ## License
 

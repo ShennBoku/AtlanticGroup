@@ -2,9 +2,9 @@
 /*
 .---------------------------------------------------------------------------.
 |    Script: Atlantic Mutasi                                                |
-|   Version: 1.5.6                                                          |
+|   Version: 1.5.8                                                          |
 |   Release: November 24, 2019 (12:27 WIB)                                  |
-|    Update: January 03, 2021 (15:27 WIB)                                   |
+|    Update: January 06, 2021 (03:31 WIB)                                   |
 |                                                                           |
 |                     Pasal 57 ayat (1) UU 28 Tahun 2014                    |
 |      Copyright © 2019, Afdhalul Ichsan Yourdan. All Rights Reserved.      |
@@ -26,14 +26,26 @@ class AtlanticMutasi
     public $sid;
     
     public $proxy_use;
-    private $proxy_url = 'proxy.rapidplex.com:3128'; // URL:Port
-    private $proxy_auth = 'user:domainesia'; // Username:Password
+    public $proxy_url;
+    public $proxy_auth;
 
     public function __construct($punten) {
         $this->id = $punten['id'];
         $this->key = $punten['key'];
         $this->sid = $punten['sid'];
-        $this->proxy_use = (isset($punten['proxy'])) ? $punten['proxy'] : false;
+
+        if(isset($punten['proxy']['use'])) {
+            $this->proxy_use = ($punten['proxy']['use'] == true) ? true : false;
+            if(isset($punten['proxy']['url']) && isset($punten['proxy']['auth'])) {
+                $this->proxy_url = (!empty($punten['proxy']['url'])) ? $punten['proxy']['url'] : 'proxy.rapidplex.com:3128';
+                $this->proxy_auth = (!empty($punten['proxy']['auth'])) ? $punten['proxy']['auth'] : 'user:domainesia';
+            } else {
+                $this->proxy_url = 'proxy.rapidplex.com:3128';
+                $this->proxy_auth = 'user:domainesia';
+            }
+        } else {
+            $this->proxy_use = false;
+        }
     }
 
     public function info($q = '') {
@@ -122,5 +134,27 @@ $AtlMutasi = new AtlanticMutasi([
     'id'    => '', // API ID
     'key'   => '', // API Key
     'sid'   => '', // Subscription ID
-    'proxy' => false // Proxy Connection
+    'proxy' => [    // Proxy Connection
+        'use' => false, // Proxy Use
+        'url' => '', // Proxy URL
+        'auth' => '', // Proxy Authentication
+    ]
 ]);
+
+// print json_encode($AtlMutasi->info()); // Mendapatkan Informasi Rekening
+
+// print json_encode($AtlMutasi->bca('Nomor Rekening / X',date('Y-m-d'),date('Y-m-d'))); // Mendapatkan Mutasi BCA hari ini
+
+// print json_encode($AtlMutasi->bni('Nomor Rekening / X',date('Y-m-d'),date('Y-m-d'))); // Mendapatkan Mutasi BNI hari ini
+
+// print json_encode($AtlMutasi->gopay('Nomor HP / X',20)); // Mendapatkan 20 Mutasi GOPAY
+// Can't Use#print json_encode($AtlMutasi->gopayTrf('detail','nomor tujuan','jumlah trf','pin','deskripsi')); // Melihat detail transfer GOPAY
+// Can't Use#print json_encode($AtlMutasi->gopayTrf('transfer','nomor tujuan','jumlah trf','pin','deskripsi')); // Melakukan transfer GOPAY
+
+// print json_encode($AtlMutasi->ovo('Nomor HP / X',20)); // Mendapatkan 20 Mutasi OVO
+// print json_encode($AtlMutasi->ovoBank()); // Melihat kode bank untuk Transfer OVO
+// print json_encode($AtlMutasi->ovoTrf('detail','nomor tujuan','jumlah trf','pin','deskripsi')); // Melihat detail transfer OVO to OVO
+// print json_encode($AtlMutasi->ovoTrf('transfer','nomor tujuan','jumlah trf','pin','deskripsi')); // Melakukan transfer OVO to OVO
+
+// print json_encode($AtlMutasi->ovoTrfBank('detail','kode bank','nomor rekening','jumlah trf','pin','deskripsi')); // Melihat detail transfer OVO to BANK
+// print json_encode($AtlMutasi->ovoTrfBank('transfer','kode bank','nomor rekening','jumlah trf','pin','deskripsi')); // Melakukan transfer OVO to BANK

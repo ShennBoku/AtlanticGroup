@@ -14,7 +14,7 @@
 | - Instagram   - ShennBoku                 - https://s.id/ShennInstagram   |
 | - Telegram    - ShennBoku                 - https://t.me/ShennBoku        |
 | - Twitter     - ShennBoku                 - https://s.id/ShennTwitter     |
-| - WhatsApp    - 0878 7954 2355            - 0822 1158 2471                |
+| - WhatsApp    - 0857 7290 6190            -                               |
 '---------------------------------------------------------------------------'
 */
 

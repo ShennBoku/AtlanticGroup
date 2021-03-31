@@ -2,9 +2,9 @@
 /*
 .---------------------------------------------------------------------------.
 |    Script: AtlanticPedia Master                                           |
-|   Version: 1.0                                                            |
+|   Version: 1.2                                                            |
 |   Release: May 21, 2020 (21:35 WIB)                                       |
-|    Update: June 15, 2020 (16:16 WIB)                                      |
+|    Update: March 31, 2021 (19:13 WIB)                                     |
 |                                                                           |
 |                     Pasal 57 ayat (1) UU 28 Tahun 2014                    |
 |      Copyright © 2019, Afdhalul Ichsan Yourdan. All Rights Reserved.      |
@@ -54,6 +54,36 @@ class AtlanticPedia
         } else {
             return ['result' => false,'data' => null,'message' => 'Invalid Request!'];
         }
+    }
+
+    public function transfer($x,$data = []) {
+    	if($x == 'list') {
+	        $post['action'] = 'list_bank';
+    	} else if($x == 'validation' && isset($data['code']) && isset($data['account'])) {
+    		$post['action'] = 'validation';
+    		$post['bankCode'] = $data['code'];
+    		$post['accountNumber'] = $data['account'];
+    	} else if($x == 'transfer' && isset($data['code']) && isset($data['account']) && isset($data['amount'])) {
+    		$post['action'] = 'transfer';
+    		$post['bankCode'] = $data['code'];
+    		$post['accountNumber'] = $data['account'];
+    		$post['transfer_amount'] = $data['amount'];
+    	}
+
+    	if(isset($post)) {
+    		$try = $this->connect('/bank', $post);
+    		if(isset($try['result'])) {
+    			return [
+                	'result' => $try['result'],
+                	'data' => $try['result'] == false ? null : $try['data'],
+                	'message' => $try['result'] == false ? $try['data'] : 'Connection Success!'
+            	];
+    		} else {
+    			return ['result' => false,'data' => null,'message' => 'Connection Failed!'];
+    		}
+    	} else {
+    		return ['result' => false,'data' => null,'message' => 'Invalid Request!'];
+    	}
     }
     
     public function status($x,$id) {
@@ -166,6 +196,11 @@ $APedia = new AtlanticPedia([
 // print json_encode($APedia->order('sosmed',['service' => '','target' => '','quantity' => '']), JSON_PRETTY_PRINT); // Buat Order
 // print json_encode($APedia->status('sosmed','ID Transaksi'), JSON_PRETTY_PRINT); // Status Transaksi
 // print json_encode($APedia->services('sosmed'), JSON_PRETTY_PRINT); // Data Layanan
+
+// TRANSFER
+// print json_encode($APedia->transfer('list'), JSON_PRETTY_PRINT); // Mendapatkan List Kode Bank
+// print json_encode($APedia->transfer('validation', ['code' => 'KODE_BANK','account' => 'NOMOR_REKENING']), JSON_PRETTY_PRINT); // Validasi Rekening Tujuan
+// print json_encode($APedia->transfer('transfer', ['code' => 'KODE_BANK','account' => 'NOMOR_REKENING','amount' => 'JUMLAH_TRANSFER']), JSON_PRETTY_PRINT); // Melakukan Transfer
 
 // DEPOSIT
 // print json_encode($APedia->deposit('request',['payment' => '','method' => '','quantity' => '','sender' => '']), JSON_PRETTY_PRINT); // Buat Deposit
